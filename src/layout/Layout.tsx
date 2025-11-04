@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Layout = () => {
   return (
@@ -8,9 +9,7 @@ const Layout = () => {
       <main className="flex-1 container mx-auto px-4 py-8">
         <Outlet /> {/* Aquí se renderizan las páginas */}
       </main>
-      <footer className="text-center py-4 text-gray-500 text-sm">
-        Hecho con 💚 por Rama
-      </footer>
+      <Footer />
     </div>
   );
 };
