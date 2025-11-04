@@ -6,9 +6,9 @@
   ],
 
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": ".", // This is important for resolving relative paths from the root
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"] // Adjust './src/*' if your 'lib' folder is elsewhere, e.g., './lib/*'
     }
   }
 }
