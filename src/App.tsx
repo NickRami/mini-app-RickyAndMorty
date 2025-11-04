@@ -1,8 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/pages-home";
-import { Layout } from "lucide-react";
-
+import Layout from "./layout/Layout";
 function App() {
   return (
     <>
