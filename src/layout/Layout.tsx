@@ -6,9 +6,11 @@ const Layout = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white flex flex-col">
       <Navbar />
-      <main className="flex-1 container mx-auto px-4 py-8">
-        <Outlet /> {/* Aquí se renderizan las páginas */}
+
+      <main className="flex-1">
+        <Outlet />
       </main>
+
       <Footer />
     </div>
   );

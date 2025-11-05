@@ -1,103 +1,107 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Input } from "../components/ui/input";
+import { Button } from "../components/ui/button";
+import { useState } from "react";
+import HeroPortal from "../assets/hero-rm.png";
+import { ChevronDown } from "lucide-react";
+
 const Hero = () => {
+  const [q, setQ] = useState("");
+
+  const handleExplore = () => {
+    const el = document.getElementById("characters");
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden text-center px-6">
-      {/* Background cards decorativas */}
-      <div className="absolute inset-0 -z-10 flex justify-center items-center gap-6 opacity-50">
-        {[...Array(3)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="w-64 h-80 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-md"
-            initial={{ y: 50, opacity: 0 }}
-            animate={{ y: 0, opacity: 0.3 }}
-            transition={{ delay: i * 0.3, duration: 1.2 }}
-            whileHover={{ rotateY: 10, scale: 1.05 }}
+    <section className="relative w-full min-h-screen overflow-hidden bg-gray-900 text-white flex items-center">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center"
+        style={{ backgroundImage: `url(${HeroPortal})` }}
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/65" />
+
+      {/* Glow portal */}
+      <motion.div
+        className="absolute inset-0 flex justify-center items-center pointer-events-none"
+        animate={{ opacity: [0.6, 0.9, 0.6], scale: [1, 1.03, 1] }}
+        transition={{ duration: 6, repeat: Infinity }}
+      >
+        <div className="w-[44vw] max-w-[700px] h-[44vw] max-h-[700px] rounded-full bg-green-400/18 blur-[120px]" />
+      </motion.div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 py-24 flex flex-col gap-6 text-center md:text-left">
+        {/* Title */}
+        <motion.h1
+          className="font-extrabold leading-tight text-white"
+          style={{ fontSize: "clamp(2.4rem, 6vw, 4.5rem)" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+        >
+          Explora el <span className="text-green-400">Multiverso</span>
+        </motion.h1>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="max-w-xl mx-auto md:mx-0 text-[clamp(1rem,2vw,1.15rem)] text-gray-300"
+        >
+          Aventúrate por dimensiones desconocidas. Busca personajes, descubre
+          ubicaciones y conoce episodios del universo de Rick & Morty.
+        </motion.p>
+
+        {/* Search */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center max-w-md mx-auto md:mx-0"
+        >
+          <Input
+            value={q}
+            onChange={(e) => setQ(e.target.value)}
+            placeholder="Buscar personaje…"
+            className="bg-white/10 text-white placeholder:text-gray-300 border-white/10"
           />
-        ))}
+
+          <Button
+            onClick={() => console.log("buscar:", q)}
+            className="min-w-[120px]"
+          >
+            Buscar
+          </Button>
+        </motion.div>
       </div>
 
-      {/* Contenido principal */}
-      <motion.h1
-        className="text-5xl md:text-6xl font-extrabold text-green-400 drop-shadow-lg"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
-      >
-        Rick & Morty Explorer
-      </motion.h1>
-
-      <motion.p
-        className="mt-4 text-gray-400 max-w-2xl"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 1 }}
-      >
-        Explora personajes, episodios y mundos del universo más loco de la TV.
-      </motion.p>
-
-      {/* Buscador */}
-      <motion.div
-        className="mt-10 flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl px-4 py-2 w-full max-w-md"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6, duration: 1 }}
-      >
-        <input
-          type="text"
-          placeholder="Buscar personaje..."
-          className="flex-1 bg-transparent border-none outline-none text-white placeholder-gray-400"
-        />
-        <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 py-2 rounded-xl transition-all">
-          Buscar
-        </button>
-      </motion.div>
-
-      {/* Highlights */}
-      <motion.div
-        className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8, duration: 1 }}
-      >
-        <div className="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
-          <h3 className="text-3xl font-bold text-green-400">+800</h3>
-          <p className="text-gray-400">Personajes únicos</p>
-        </div>
-        <div className="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
-          <h3 className="text-3xl font-bold text-green-400">+120</h3>
-          <p className="text-gray-400">Episodios disponibles</p>
-        </div>
-        <div className="bg-white/5 p-6 rounded-2xl border border-white/10 backdrop-blur-md">
-          <h3 className="text-3xl font-bold text-green-400">+30</h3>
-          <p className="text-gray-400">Ubicaciones misteriosas</p>
-        </div>
-      </motion.div>
-
       {/* Scroll indicator */}
-      <motion.div
-        className="mt-16 flex flex-col items-center text-gray-500"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+      <motion.button
+        onClick={handleExplore}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center text-gray-200 hover:text-white"
       >
-        <p className="text-sm mb-2">Explora personajes</p>
+        <span className="text-xs mb-1">Explorar personajes</span>
         <svg
-          xmlns="http://www.w3.org/2000/svg"
+          className="w-6 h-6 animate-bounce"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={2}
           stroke="currentColor"
-          className="w-6 h-6"
         >
           <path
+            strokeWidth={2}
             strokeLinecap="round"
             strokeLinejoin="round"
             d="M19 9l-7 7-7-7"
           />
         </svg>
-      </motion.div>
+      </motion.button>
     </section>
   );
 };
