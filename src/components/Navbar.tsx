@@ -18,12 +18,6 @@ function Navbar() {
         {/* Links */}
         <div className="hidden md:flex items-center space-x-6">
           <Link
-            to="/characters"
-            className="hover:text-green-300 transition-all duration-300"
-          >
-            Personajes
-          </Link>
-          <Link
             to="/episodes"
             className="hover:text-green-300 transition-all duration-300"
           >

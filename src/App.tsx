@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "./pages/pages-home";
 import Layout from "./layout/Layout";
+import EpisodesSection from "./components/EpisodesSection";
 function App() {
   return (
     <>
@@ -10,6 +11,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
           </Route>
+          <Route path="/episodes" element={<EpisodesSection />} />
         </Routes>
       </main>
     </>
