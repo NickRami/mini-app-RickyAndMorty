@@ -8,6 +8,11 @@ export interface Character {
   location: {
     name: string;
   };
+  origin?: {
+    // Added optional origin property
+    name: string;
+    url: string;
+  };
 }
 
 export async function getCharacters(): Promise<Character[]> {

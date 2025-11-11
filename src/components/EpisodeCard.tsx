@@ -18,7 +18,7 @@ type Props = {
 const EpisodeCard = ({ episode }: Props) => {
   return (
     <div className="relative group perspective-1000 h-full">
-      <Card className="relative bg-gradient-to-br from-gray-900/80 to-gray-800/60 border border-gray-800 transform transition-transform duration-500 will-change-transform group-hover:-translate-y-3 group-hover:scale-[1.02] hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden h-full flex flex-col">
+      <Card className="relative bg-linear-to-br from-gray-900/80 to-gray-800/60 border border-gray-800 transform transition-transform duration-500 will-change-transform group-hover:-translate-y-3 group-hover:scale-[1.02] hover:shadow-[0_20px_60px_rgba(0,0,0,0.6)] overflow-hidden h-full flex flex-col">
         <CardHeader className="pb-4">
           <div className="flex gap-2 items-start">
             <Film className="w-4 h-4 text-emerald-400 mt-1 shrink-0" />
@@ -37,7 +37,7 @@ const EpisodeCard = ({ episode }: Props) => {
             </p>
 
             <p className="text-sm text-gray-300 flex items-center gap-2 mt-2">
-              <Calendar className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <Calendar className="w-4 h-4 text-emerald-400 shrink-0" />
               <span className="font-medium text-emerald-400">Aire:</span>
               <span>{episode.air_date}</span>
             </p>
