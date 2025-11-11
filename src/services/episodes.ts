@@ -3,7 +3,14 @@ export interface Episode {
   name: string;
   air_date: string;
   episode: string;
+  characters: string[];
 }
+
+export const extractEpisodeNumber = (code: string) =>
+  Number(code.split("E")[1]);
+
+export const extractSeasonNumber = (code: string) =>
+  code.split("E")[0].replace("S", "");
 
 export const getEpisodes = async (): Promise<Episode[]> => {
   let url = "https://rickandmortyapi.com/api/episode";
